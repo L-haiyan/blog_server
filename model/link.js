@@ -10,6 +10,9 @@ const LinkSchema = new mongoose.Schema({
         type: String
     },
     jointime: {
+        type:Number
+    },
+    tip:{
         type:String
     }
 })
@@ -17,12 +20,12 @@ const LinkSchema = new mongoose.Schema({
 
 const Link = mongoose.model('link', LinkSchema)
 
-Link.create({
-    nickname:"haiyan",
-    jointime:"2020",
-    address:"http:",
-    logo:"http"
-})
+// Link.create({
+//     nickname:"haiyan",
+//     jointime:"2020",
+//     address:"http:",
+//     logo:"http"
+// })
 module.exports = {
     Link
 }

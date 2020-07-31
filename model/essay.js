@@ -10,7 +10,7 @@ const essaySchema = new mongoose.Schema({
         type: String
     },
     publishtime: {
-        type: String
+        type: Number 
     },
     category: {
         type: String
@@ -27,7 +27,6 @@ const Essay = mongoose.model('Essay', essaySchema)
 //     author: 'haiyan',
 //     category:'前端',
 //     text:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈和哈哈哈哈哈哈哈哈哈',
-//     viewSs:10
 // }).then(()=>{
 //     console.log('文章创建成功');
 // }).catch(()=> {

@@ -2,37 +2,31 @@ const { Words } = require('../model/words.js')
 
 //发布留言
 exports.upWords = async(req,res) => {
-    const username = req.body.username
-    const time = req.body.time
+    const nickname = req.body.nickname
+    const email = req.body.email
     const content = req.body.content
-    const replay = req.body.replay
+    const replay = ""
+    const time = Date.parse(new Date())
     const update = await Words.create({
-        username,
+        nickname,
         content,
         time,
-        replay
+        replay,
+        email
     })
     res.send({
         code:200
     })
 }
 
-//获取留言
+//获取全部留言
 exports.getWords = async(req,res) => {
-    const isall = await req.query.isall
-    if(isall=='true') {
         const result = await Words.find().sort({_id:-1})
         res.send({
             data: result,
             moreData: true
         })
-    } else {
-        const result = await Words.find().sort({_id:-1}).limit(10)
-        res.send({
-            data: result,
-            moreData: true
-        })
-    }
+  
 }
 //获取5条留言
 exports.getWords5 = async(req,res) => {
@@ -40,6 +34,16 @@ exports.getWords5 = async(req,res) => {
     res.send({
         data:result,
         moreData:true
+    })
+}
+
+//根据id获取留言'
+exports.getWords1 = async(req,res) => {
+    const id = req.query.id
+    const result = await Words.findById({ _id: id })
+    res.send({
+        code: 200,
+        data:result
     })
 }
 
